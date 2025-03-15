@@ -1,51 +1,36 @@
 body {
-    text-align: center;
     font-family: Arial, sans-serif;
-    background-color: #bc8383; /* Dark Theme */
-    color: #ffffff; /* Light Text for Readability */
+    text-align: center;
+    background-color: #f8c2c2;
 }
 
 h1 {
-    color: #f8f8f8;
-    margin-bottom: 10px;
-}
-
-h2 {
-    color: #ddd;
+    color: #5f381e;
 }
 
 .grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(8, 50px);
+    grid-template-rows: repeat(8, 50px);
     gap: 2px;
+    width: fit-content;
     margin: 20px auto;
-    width: 420px;
-    background-color: #d2ecf3; /* Dark Grid Background */
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(235, 56, 56, 0.1);
+    border: 3px solid #333;
+    padding: 5px;
+    background-color: white;
 }
 
 .candy {
     width: 50px;
     height: 50px;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: transform 0.1s ease-in-out, box-shadow 0.2s;
-    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    transition: 0.2s;
 }
 
-/* Candy Colors - More Vibrant */
-.red { background-color: #ff4c4c; }
-.yellow { background-color: #ffcc00; }
-.green { background-color: #33cc33; }
-.blue { background-color: #3399ff; }
-.purple { background-color: #cc66ff; }
-.orange { background-color: #ff9933; }
-
-/* Hover Effect - Glow Effect */
-.candy:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
+/* Candy Colors */
+.red { background-color: red; }
+.yellow { background-color: yellow; }
+.green { background-color: green; }
+.blue { background-color: blue; }
+.purple { background-color: purple; }
+.orange { background-color: orange; }
