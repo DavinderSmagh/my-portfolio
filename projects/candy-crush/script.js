@@ -5,24 +5,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const candies = ["red", "yellow", "green", "blue", "purple", "orange"];
     let squares = [];
     let score = 0;
+    let draggedElement, replacedElement;
 
-    // Create the Board
     function createBoard() {
         for (let i = 0; i < width * width; i++) {
             const square = document.createElement("div");
             square.setAttribute("id", i);
             let randomColor = candies[Math.floor(Math.random() * candies.length)];
-            square.style.backgroundColor = randomColor;
-            square.classList.add("candy");
-            square.setAttribute("draggable", true);
+            square.classList.add("candy", randomColor);
             grid.appendChild(square);
             squares.push(square);
         }
     }
 
     createBoard();
-
-    let draggedElement, replacedElement;
 
     function dragStart() {
         draggedElement = this;
@@ -42,17 +38,12 @@ document.addEventListener("DOMContentLoaded", () => {
         let draggedId = parseInt(draggedElement.id);
         let replacedId = parseInt(replacedElement.id);
 
-        const validMoves = [
-            draggedId - 1, draggedId + 1,
-            draggedId - width, draggedId + width
-        ];
+        const validMoves = [draggedId - 1, draggedId + 1, draggedId - width, draggedId + width];
 
         if (validMoves.includes(replacedId)) {
-            // Swap colors instead of class names
-            let tempColor = draggedElement.style.backgroundColor;
-            draggedElement.style.backgroundColor = replacedElement.style.backgroundColor;
-            replacedElement.style.backgroundColor = tempColor;
-
+            let tempClass = draggedElement.className;
+            draggedElement.className = replacedElement.className;
+            replacedElement.className = tempClass;
             checkMatches();
         }
     }
@@ -60,26 +51,26 @@ document.addEventListener("DOMContentLoaded", () => {
     function checkMatches() {
         let matched = false;
 
-        // Check for horizontal matches
+        // Horizontal matches
         for (let i = 0; i < width * width; i++) {
             if (i % width > width - 3) continue;
             let row = [i, i + 1, i + 2];
-            let color = squares[i].style.backgroundColor;
+            let color = squares[i].classList[1];
 
-            if (row.every(index => squares[index].style.backgroundColor === color && color !== "")) {
-                row.forEach(index => squares[index].style.backgroundColor = "");
+            if (row.every(index => squares[index].classList[1] === color && color !== undefined)) {
+                row.forEach(index => squares[index].className = "candy");
                 matched = true;
                 score += 10;
             }
         }
 
-        // Check for vertical matches
+        // Vertical matches
         for (let i = 0; i < width * (width - 2); i++) {
             let column = [i, i + width, i + 2 * width];
-            let color = squares[i].style.backgroundColor;
+            let color = squares[i].classList[1];
 
-            if (column.every(index => squares[index].style.backgroundColor === color && color !== "")) {
-                column.forEach(index => squares[index].style.backgroundColor = "");
+            if (column.every(index => squares[index].classList[1] === color && color !== undefined)) {
+                column.forEach(index => squares[index].className = "candy");
                 matched = true;
                 score += 10;
             }
@@ -96,11 +87,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function moveDown() {
         for (let i = width * (width - 1); i >= 0; i--) {
-            if (squares[i].style.backgroundColor === "") {
+            if (squares[i].classList.length === 1) {
                 let above = i - width;
                 if (above >= 0) {
-                    squares[i].style.backgroundColor = squares[above].style.backgroundColor;
-                    squares[above].style.backgroundColor = "";
+                    squares[i].className = squares[above].className;
+                    squares[above].className = "candy";
                 }
             }
         }
@@ -108,9 +99,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function refillBoard() {
         for (let i = 0; i < width; i++) {
-            if (squares[i].style.backgroundColor === "") {
+            if (squares[i].classList.length === 1) {
                 let newColor = candies[Math.floor(Math.random() * candies.length)];
-                squares[i].style.backgroundColor = newColor;
+                squares[i].classList.add(newColor);
             }
         }
     }
