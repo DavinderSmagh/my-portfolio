@@ -1,0 +1,51 @@
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background-color: #bc8383; /* Dark Theme */
+    color: #ffffff; /* Light Text for Readability */
+}
+
+h1 {
+    color: #f8f8f8;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #ddd;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2px;
+    margin: 20px auto;
+    width: 420px;
+    background-color: #d2ecf3; /* Dark Grid Background */
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(235, 56, 56, 0.1);
+}
+
+.candy {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.1s ease-in-out, box-shadow 0.2s;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2);
+}
+
+/* Candy Colors - More Vibrant */
+.red { background-color: #ff4c4c; }
+.yellow { background-color: #ffcc00; }
+.green { background-color: #33cc33; }
+.blue { background-color: #3399ff; }
+.purple { background-color: #cc66ff; }
+.orange { background-color: #ff9933; }
+
+/* Hover Effect - Glow Effect */
+.candy:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
