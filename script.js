@@ -27,11 +27,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const charCounter = document.getElementById("charCounter");
     const toggleModeBtn = document.getElementById("toggleMode");
 
-    // 🌙 Dark Mode Toggle
-    toggleModeBtn.addEventListener("click", () => {
-        document.body.classList.toggle("dark-mode");
-        toggleModeBtn.textContent = document.body.classList.contains("dark-mode") ? "☀️ Light Mode" : "🌙 Dark Mode";
-    });
+    // // 🌙 Dark Mode Toggle
+    // toggleModeBtn.addEventListener("click", () => {
+    //     document.body.classList.toggle("dark-mode");
+    //     toggleModeBtn.textContent = document.body.classList.contains("dark-mode") ? "☀️ Light Mode" : "🌙 Dark Mode";
+    // });
 
     // ✍️ Live Character Counter for Message
     messageInput.addEventListener("input", () => {
