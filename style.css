@@ -28,7 +28,9 @@ header {
 nav ul {
     list-style: none;
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     gap: 30px;
 }
 
